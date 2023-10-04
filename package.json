@@ -1,0 +1,22 @@
+{
+  "name": "talky",
+  "version": "1.0.0",
+  "description": "Chatty Client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Schneewolf-Labs/Talky.git"
+  },
+  "author": "Schneewolf Labs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Schneewolf-Labs/Talky/issues"
+  },
+  "homepage": "https://github.com/Schneewolf-Labs/Talky#readme",
+  "dependencies": {
+    "ws": "^8.14.2"
+  }
+}
