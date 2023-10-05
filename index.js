@@ -15,7 +15,7 @@ ws.on('open', () => {
     console.log('Connected to the server');
 
     // prompt for input
-    rl.question('Enter message: ', sendMessage);
+    promptForInput();
 });
 
 ws.on('message', (data) => {
@@ -23,21 +23,22 @@ ws.on('message', (data) => {
 
     switch (message.event) {
         case 'receive_message':
-            console.log('Received message:', message.data);
+            log('Received message: ' + message.data);
             break;
         case 'receive_image':
-            console.log('Received image:', message.data);
+            log('Received image: ' + message.data);
             break;
         case 'receive_typing':
-            console.log('Someone is typing...');
+            log('Someone is typing...');
             break;
         default:
-            console.log('Unknown event:', message.event);
+            log('Unknown event: ' + message.event);
     }
+    promptForInput();
 });
 
 ws.on('close', () => {
-    console.log('Disconnected from the server');
+    log('Disconnected from the server');
     process.exit();
 });
 
@@ -57,5 +58,15 @@ function sendMessage(text) {
     }));
 
     // prompt for input
-    rl.question('Enter message: ', sendMessage);
+    promptForInput();
+}
+
+function promptForInput() {
+    rl.question(`${username}: `, sendMessage);
+}
+
+function log(str) {
+    // clear the current line
+    readline.clearLine(process.stdout, 0);
+    console.log(str);
 }
