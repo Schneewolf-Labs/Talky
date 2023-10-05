@@ -3,6 +3,7 @@ const readline = require('readline');
 const process = require('process');
 
 const apiURL = 'ws://127.0.0.1:3000/api';
+const username = 'Talky';
 
 const ws = new WebSocket(apiURL);
 const rl = readline.createInterface({
@@ -44,7 +45,12 @@ ws.on('error', (error) => {
     console.error('WebSocket Error:', error);
 });
 
-function sendMessage(message) {
+function sendMessage(text) {
+    const message = {
+        author: username,
+        text: text
+    };
+
     ws.send(JSON.stringify({
         event: 'send_message',
         data: message
