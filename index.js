@@ -20,13 +20,14 @@ ws.on('open', () => {
 
 ws.on('message', (data) => {
     const message = JSON.parse(data);
+    const msgData = message.data;
 
     switch (message.event) {
         case 'receive_message':
-            log('Received message: ' + message.data);
+            log('Received message: ' + msgData.text);
             break;
         case 'receive_image':
-            log('Received image: ' + message.data);
+            log('Received image: ' + msgData.image);
             break;
         case 'receive_typing':
             log('Someone is typing...');
